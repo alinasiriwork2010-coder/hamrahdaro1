@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>همراه‌دارو | نسخه نمایشی</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="splash" class="splash">
+  <div class="logo-orbit"><div class="logo-pill">💊</div></div>
+  <h1>همراه‌دارو</h1><p>همراه مطمئن برای مدیریت دارو</p>
+</div>
+
+<div id="login" class="login-screen hidden">
+  <div class="login-box">
+    <div class="login-logo">💊</div>
+    <h1>ورود به همراه‌دارو</h1>
+    <p>برای ورود نمایشی اطلاعات زیر را وارد کنید.</p>
+    <label>شماره موبایل<input id="phone" type="tel" placeholder="09xxxxxxxxx"></label>
+    <label>رمز عبور<input id="password" type="password" placeholder="رمز عبور"></label>
+    <button class="primary full" onclick="demoLogin()">ورود نمایشی</button>
+    <button class="google" onclick="demoLogin()">G &nbsp; ورود نمایشی با Google</button>
+    <small>این ورود کاملاً نمایشی است و هیچ اطلاعاتی ذخیره یا ارسال نمی‌شود.</small>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+<header class="topbar"><div><div class="brand">💊 همراه‌دارو</div><div class="sub">همراه مطمئن برای مدیریت دارو</div></div><button class="avatar" onclick="showPage('profile')">ع</button></header>
+<main>
+<section id="home" class="page active">
+<div class="hero"><div><span class="badge">نسخه نمایشی</span><h1>سلام علی 👋</h1><p>امروز داروهایت را به موقع مصرف کن.</p></div><div class="hero-icon">💊</div></div>
+<div class="stats"><div><strong>۳</strong><span>داروی امروز</span></div><div><strong>۲</strong><span>مصرف شده</span></div><div><strong>۱</strong><span>باقی‌مانده</span></div></div>
+<div class="section-title"><h2>یادآوری بعدی</h2><button onclick="showPage('medicines')">همه</button></div>
+<div class="card reminder"><div class="pill">💊</div><div class="grow"><h3>آملودیپین ۵</h3><p>۱ عدد · بعد از صبحانه</p></div><strong class="time">۰۸:۰۰</strong></div>
+<div class="section-title"><h2>دسترسی سریع</h2></div>
+<div class="quick"><button onclick="showPage('add')">➕<span>افزودن دارو</span></button><button onclick="showPage('family')">👨‍👩‍👧<span>خانواده</span></button><button onclick="showPage('emergency')">🚑<span>سفارش فوری</span></button><button onclick="showPage('wallet')">💳<span>کیف پول</span></button></div>
+<div class="notice">🔔 <b>یادآوری:</b> نوبت بعدی مصرف دارو ساعت ۱۲:۳۰ است.</div>
+</section>
+<section id="medicines" class="page"><div class="page-head"><div><h1>داروهای من</h1><p>برنامه مصرف امروز</p></div><button class="primary" onclick="showPage('add')">+ افزودن</button></div>
+<div class="medicine done"><div class="pill">💊</div><div class="grow"><h3>متفورمین ۵۰۰</h3><p>۱ عدد · بعد از صبحانه</p></div><span class="check">✓ مصرف شد</span></div>
+<div class="medicine done"><div class="pill">💊</div><div class="grow"><h3>ویتامین D</h3><p>۱ عدد · ساعت ۱۰:۰۰</p></div><span class="check">✓ مصرف شد</span></div>
+<div class="medicine"><div class="pill">💊</div><div class="grow"><h3>آملودیپین ۵</h3><p>۱ عدد · ساعت ۱۲:۳۰</p></div><button class="take" onclick="markTaken(this)">مصرف کردم</button></div></section>
+<section id="add" class="page"><div class="page-head"><div><h1>افزودن دارو</h1><p>اطلاعات دارو را وارد کنید</p></div></div><div class="form card"><label>نام دارو<input id="drugName" placeholder="مثلاً آملودیپین ۵"></label><label>دوز مصرف<input placeholder="مثلاً ۱ عدد"></label><label>زمان مصرف<input type="time" value="12:30"></label><label>توضیحات<textarea placeholder="مثلاً بعد از غذا"></textarea></label><button class="primary full" onclick="addMedicine()">ذخیره دارو</button></div></section>
+<section id="family" class="page"><div class="page-head"><div><h1>اطلاع خانواده</h1><p>اعضای متصل به حساب سالمند</p></div></div><div class="family card"><div class="person">👩</div><div class="grow"><h3>مریم نادری</h3><p>دختر · متصل</p></div><span class="online">● آنلاین</span></div><div class="family card"><div class="person">👨</div><div class="grow"><h3>رضا نادری</h3><p>پسر · متصل</p></div><span class="online">● آنلاین</span></div><button class="secondary full" onclick="alert('در نسخه واقعی، کد دعوت برای عضو خانواده ارسال می‌شود.')">+ اتصال عضو خانواده</button></section>
+<section id="emergency" class="page"><div class="emergency-hero">🚑</div><h1>سفارش اضطراری دارو</h1><p class="muted">اگر داروی ضروری تمام شده، می‌توانید درخواست فوری ثبت کنید.</p><div class="card form"><label>داروی مورد نیاز<input placeholder="نام دارو"></label><label>توضیحات<textarea placeholder="تعداد یا توضیحات سفارش"></textarea></label><div class="price"><span>هزینه تقریبی</span><strong>۱۲۰,۰۰۰ تومان</strong></div><button class="danger full" onclick="placeOrder()">ثبت سفارش فوری</button></div></section>
+<section id="wallet" class="page"><div class="wallet-card"><span>موجودی کیف پول</span><strong>۴۸۰,۰۰۰ تومان</strong><small>آخرین بروزرسانی: امروز</small></div><div class="section-title"><h2>تراکنش‌ها</h2></div><div class="transaction card"><span>➕ شارژ کیف پول</span><b class="green">+۵۰۰,۰۰۰</b></div><div class="transaction card"><span>🚑 سفارش اضطراری</span><b class="red">−۱۲۰,۰۰۰</b></div><button class="primary full" onclick="alert('در نسخه واقعی به درگاه پرداخت متصل می‌شود.')">+ شارژ کیف پول</button></section>
+<section id="profile" class="page"><div class="profile card"><div class="big-avatar">ع</div><h2>علی نادری</h2><p>کاربر نمونه همراه‌دارو</p></div><div class="menu card"><button>🔔 تنظیمات یادآوری <span>›</span></button><button>🔐 امنیت و حساب <span>›</span></button><button>👨‍👩‍👧 مدیریت خانواده <span>›</span></button><button onclick="demoLogout()">🚪 خروج نمایشی <span>›</span></button></div></section>
+</main>
+<nav class="bottom"><button class="nav active" data-page="home" onclick="showPage('home')">⌂<span>خانه</span></button><button class="nav" data-page="medicines" onclick="showPage('medicines')">💊<span>داروها</span></button><button class="nav emergency-nav" data-page="emergency" onclick="showPage('emergency')">🚑<span>فوری</span></button><button class="nav" data-page="family" onclick="showPage('family')">👨‍👩‍👧<span>خانواده</span></button><button class="nav" data-page="wallet" onclick="showPage('wallet')">💳<span>کیف پول</span></button></nav>
+</div>
+<script src="script.js"></script>
+</body></html>
